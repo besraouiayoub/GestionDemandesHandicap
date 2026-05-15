@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<BorderPane
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	maxHeight="-Infinity"
+	maxWidth="-Infinity"
+	minHeight="-Infinity"
+	minWidth="-Infinity"
+	prefHeight="900.0"
+	prefWidth="1100.0"
+	fx:controller="uir.ac.gestionhandicape.controllers.AdmiDashController">
+	<left>
+		<VBox
+			prefHeight="900.0"
+			prefWidth="220.0"
+			style="-fx-background-color:#073566;">
+			<children>
+				<VBox
+					alignment="CENTER"
+					spacing="10.0"
+					style="-fx-padding:30 20 20 20;">
+					<children>
+						<ImageView
+							fitHeight="70.0"
+							fitWidth="70.0"
+							pickOnBounds="true"
+							preserveRatio="true">
+							<image>
+								<Image url="@../img/UIR-logo.jpg"/>
+							</image>
+						</ImageView>
+						<Text
+							fill="#d0d71c"
+							text="Administration"
+							textAlignment="CENTER"
+							wrappingWidth="160.0">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="18.0" />
+							</font>
+						</Text>
+						<Text
+							fill="#ffffff"
+							text="Gestion des Réclamations"
+							textAlignment="CENTER"
+							wrappingWidth="160.0">
+							<font>
+								<Font size="11.0"/>
+							</font>
+						</Text>
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					spacing="4.0"
+					style="-fx-padding:16 12 16 12;">
+					<children>
+						<Button
+							fx:id="btnDashboard"
+							onAction="#handleDashboard"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Tableau de bord" />
+						<Button
+							fx:id="btnReclamations"
+							onAction="#handleReclamations"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Réclamations" />
+						<Button
+							fx:id="btnDemandes"
+							layoutX="22.0"
+							layoutY="72.0"
+							onAction="#handleDemandes"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Demandes" />
+						<Button
+							fx:id="btnEtudiants"
+							onAction="#handleEtudiants"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Étudiants" />
+						<Button
+							fx:id="btnStats"
+							onAction="#handleStats"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Statistiques" />
+						<Button
+							fx:id="btnCreer"
+							onAction="#handleCreationCompte"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Créer compte étudiant" />
+					</children>
+				</VBox>
+				<Region VBox.vgrow="ALWAYS"/>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox style="-fx-padding:16 12 24 12;">
+					<children>
+						<Button
+							fx:id="btnLogout"
+							onAction="#handleLogout"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ff6b6b;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Déconnexion" />
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</left>
+	<center>
+		<VBox
+			spacing="20.0"
+			style="-fx-background-color:#f0f4f8;">
+			<padding>
+				<Insets
+					bottom="30.0"
+					left="30.0"
+					right="30.0"
+					top="30.0" />
+			</padding>
+			<children>
+				<HBox
+					alignment="CENTER_LEFT"
+					spacing="10.0">
+					<children>
+						<VBox
+							spacing="4.0"
+							HBox.hgrow="ALWAYS">
+							<children>
+								<Text
+									fill="#073566"
+									text="Tableau de bord">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="28.0" />
+									</font>
+								</Text>
+								<Text
+									fill="#888888"
+									text="Bienvenue, Administrateur">
+									<font>
+										<Font size="13.0"/>
+									</font>
+								</Text>
+							</children>
+						</VBox>
+						<Label
+							fx:id="dateLabel"
+							style="-fx-background-color:#073566;-fx-text-fill:#d0d71c;-fx-font-size:12px;-fx-font-weight:bold;-fx-background-radius:20;-fx-padding:8 16;"
+							text="13 Mai 2026" />
+					</children>
+				</HBox>
+				<HBox spacing="16.0">
+					<children>
+						<VBox
+							alignment="CENTER"
+							prefHeight="100.0"
+							prefWidth="155.0"
+							spacing="8.0"
+							style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+							<padding>
+								<Insets
+									bottom="20.0"
+									left="16.0"
+									right="16.0"
+									top="20.0" />
+							</padding>
+							<children>
+								<Text
+									fill="#888888"
+									text="Total Réclamations">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+								<Text
+									fx:id="totalLabel"
+									fill="#073566"
+									text="128">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="32.0" />
+									</font>
+								</Text>
+								<Label
+									style="-fx-text-fill:#27ae60;-fx-font-size:11px;"
+									text="↑ +12 ce mois" />
+							</children>
+						</VBox>
+						<VBox
+							alignment="CENTER"
+							prefHeight="100.0"
+							prefWidth="155.0"
+							spacing="8.0"
+							style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+							<padding>
+								<Insets
+									bottom="20.0"
+									left="16.0"
+									right="16.0"
+									top="20.0" />
+							</padding>
+							<children>
+								<Text
+									fill="#888888"
+									text="En attente">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+								<Text
+									fx:id="enAttenteLabel"
+									fill="#e67e22"
+									text="34">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="32.0" />
+									</font>
+								</Text>
+								<Label
+									style="-fx-text-fill:#e67e22;-fx-font-size:11px;"
+									text="⏳ À traiter" />
+							</children>
+						</VBox>
+						<VBox
+							alignment="CENTER"
+							prefHeight="100.0"
+							prefWidth="155.0"
+							spacing="8.0"
+							style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+							<padding>
+								<Insets
+									bottom="20.0"
+									left="16.0"
+									right="16.0"
+									top="20.0" />
+							</padding>
+							<children>
+								<Text
+									fill="#888888"
+									text="Traitées">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+								<Text
+									fx:id="traiteeLabel"
+									fill="#27ae60"
+									text="89">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="32.0" />
+									</font>
+								</Text>
+								<Label
+									style="-fx-text-fill:#27ae60;-fx-font-size:11px;"
+									text="✔ Résolues" />
+							</children>
+						</VBox>
+						<VBox
+							alignment="CENTER"
+							prefHeight="100.0"
+							prefWidth="155.0"
+							spacing="8.0"
+							style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+							<padding>
+								<Insets
+									bottom="20.0"
+									left="16.0"
+									right="16.0"
+									top="20.0" />
+							</padding>
+							<children>
+								<Text
+									fill="#888888"
+									text="Rejetées">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+								<Text
+									fx:id="rejeteeLabel"
+									fill="#e74c3c"
+									text="5">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="32.0" />
+									</font>
+								</Text>
+								<Label
+									style="-fx-text-fill:#e74c3c;-fx-font-size:11px;"
+									text="✗ Refusées" />
+							</children>
+						</VBox>
+						<VBox
+							alignment="CENTER"
+							prefHeight="100.0"
+							prefWidth="155.0"
+							spacing="8.0"
+							style="-fx-background-color:#073566;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(7,53,102,0.3),8,0,0,2);">
+							<padding>
+								<Insets
+									bottom="20.0"
+									left="16.0"
+									right="16.0"
+									top="20.0" />
+							</padding>
+							<children>
+								<Text
+									fill="#d0d71c"
+									text="Étudiants">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+								<Text
+									fx:id="etudiantLabel"
+									fill="#ffffff"
+									text="247">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="32.0" />
+									</font>
+								</Text>
+								<Label
+									style="-fx-text-fill:#d0d71c;-fx-font-size:11px;"
+									text="👤 Inscrits" />
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+				<VBox
+					spacing="12.0"
+					style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+					<padding>
+						<Insets
+							bottom="20.0"
+							left="20.0"
+							right="20.0"
+							top="20.0" />
+					</padding>
+					<children>
+						<HBox alignment="CENTER_LEFT">
+							<children>
+								<Text
+									fill="#073566"
+									text="Réclamations récentes"
+									HBox.hgrow="ALWAYS">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="18.0" />
+									</font>
+								</Text>
+								<Button
+									onAction="#handleReclamations"
+									style="-fx-background-color:#f0f4f8;-fx-text-fill:#073566;-fx-font-size:12px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;-fx-padding:6 14;"
+									text="Voir tout" />
+							</children>
+						</HBox>
+						<TableView
+							fx:id="reclamationsTable"
+							prefHeight="250.0"
+							style="-fx-background-color:transparent;-fx-border-color:transparent;">
+							<columns>
+								<TableColumn
+									fx:id="colId"
+									prefWidth="50.0"
+									text="#" />
+								<TableColumn
+									fx:id="colEtudiant"
+									prefWidth="160.0"
+									text="Étudiant" />
+								<TableColumn
+									fx:id="colType"
+									prefWidth="160.0"
+									text="Type" />
+								<TableColumn
+									fx:id="colDate"
+									prefWidth="120.0"
+									text="Date" />
+								<TableColumn
+									fx:id="colStatut"
+									prefWidth="110.0"
+									text="Statut" />
+								<TableColumn
+									fx:id="colAction"
+									prefWidth="100.0"
+									text="Action" />
+							</columns>
+							<placeholder>
+								<Label
+									style="-fx-text-fill:#aaaaaa;-fx-font-size:13px;"
+									text="Aucune réclamation pour le moment." />
+							</placeholder>
+						</TableView>
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</center>
+</BorderPane>

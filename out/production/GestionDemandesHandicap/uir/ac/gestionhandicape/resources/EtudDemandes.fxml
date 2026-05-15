@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	prefHeight="900.0"
+	prefWidth="1100.0"
+	fx:controller="uir.ac.gestionhandicape.controllers.EtudDemandesController">
+	<left>
+		<VBox
+			prefWidth="220.0"
+			style="-fx-background-color:#073566;">
+			<VBox
+				alignment="CENTER"
+				spacing="10.0"
+				style="-fx-padding:30 20 20 20;">
+				<ImageView
+					fitHeight="70.0"
+					fitWidth="70.0"
+					preserveRatio="true">
+					<image>
+						<Image url="@../img/UIR-logo.jpg"/>
+					</image>
+				</ImageView>
+				<Text
+					fill="#d0d71c"
+					text="Espace Étudiant"
+					textAlignment="CENTER"
+					wrappingWidth="160.0">
+					<font>
+						<Font
+							name="DIN Condensed Bold"
+							size="18.0" />
+					</font>
+				</Text>
+				<Text
+					fill="#ffffff"
+					text="Gestion des demandes"
+					textAlignment="CENTER"
+					wrappingWidth="160.0">
+					<font>
+						<Font size="11.0"/>
+					</font>
+				</Text>
+			</VBox>
+			<Separator style="-fx-background-color:#1a4a7a;"/>
+			<VBox
+				alignment="CENTER"
+				spacing="6.0"
+				style="-fx-padding:20 16 16 16;">
+				<Label
+					fx:id="avatarLabel"
+					text="A"
+					style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:22px;-fx-font-weight:bold;-fx-background-radius:30;-fx-min-width:52;-fx-min-height:52;-fx-alignment:CENTER;" />
+				<Label
+					fx:id="nomEtudiantLabel"
+					text="Amine Benali"
+					style="-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-font-weight:bold;" />
+				<Label
+					fx:id="numeroEtudiantLabel"
+					text="N° 20230001"
+					style="-fx-text-fill:#aaaaaa;-fx-font-size:11px;" />
+			</VBox>
+			<Separator style="-fx-background-color:#1a4a7a;"/>
+			<VBox
+				spacing="4.0"
+				style="-fx-padding:16 12 16 12;">
+				<Button
+					fx:id="btnDashboard"
+					onAction="#handleDashboard"
+					prefHeight="42.0"
+					prefWidth="196.0"
+					text="Tableau de bord"
+					style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;" />
+				<Button
+					fx:id="btnReclamations"
+					onAction="#handleReclamations"
+					prefHeight="42.0"
+					prefWidth="196.0"
+					text="Mes réclamations"
+					style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;" />
+				<Button
+					fx:id="btnDemandes"
+					onAction="#handleDemandes"
+					prefHeight="42.0"
+					prefWidth="196.0"
+					text="Mes demandes"
+					style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;" />
+				<Button
+					fx:id="btnProfil"
+					onAction="#handleProfil"
+					prefHeight="42.0"
+					prefWidth="196.0"
+					text="Mon profil"
+					style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;" />
+			</VBox>
+			<Region VBox.vgrow="ALWAYS"/>
+			<Separator style="-fx-background-color:#1a4a7a;"/>
+			<VBox style="-fx-padding:16 12 24 12;">
+				<Button
+					onAction="#handleLogout"
+					prefHeight="42.0"
+					prefWidth="196.0"
+					text="Déconnexion"
+					style="-fx-background-color:transparent;-fx-text-fill:#ff6b6b;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;" />
+			</VBox>
+		</VBox>
+	</left>
+	<center>
+		<VBox
+			spacing="0.0"
+			style="-fx-background-color:#f0f4f8;">
+			<HBox
+				alignment="CENTER_LEFT"
+				prefHeight="58.0"
+				spacing="12.0"
+				style="-fx-background-color:#ffffff;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),6,0,0,2);-fx-padding:0 24 0 24;">
+				<Text
+					fill="#073566"
+					text="Mes demandes"
+					HBox.hgrow="ALWAYS">
+					<font>
+						<Font
+							name="DIN Condensed Bold"
+							size="20.0" />
+					</font>
+				</Text>
+				<TextField
+					fx:id="topSearchField"
+					prefWidth="240.0"
+					promptText="Rechercher une demande..."
+					style="-fx-background-color:#f0f4f8;-fx-border-color:transparent;-fx-background-radius:20;-fx-padding:8 14;-fx-font-size:12px;" />
+			</HBox>
+			<VBox
+				spacing="20.0"
+				style="-fx-padding:24 28 28 28;"
+				VBox.vgrow="ALWAYS">
+				<HBox
+					alignment="CENTER_LEFT"
+					prefHeight="90.0"
+					spacing="20.0"
+					style="-fx-background-color:#073566;-fx-background-radius:14;-fx-padding:20 28;">
+					<VBox
+						spacing="6.0"
+						HBox.hgrow="ALWAYS">
+						<Text
+							fill="#d0d71c"
+							text="Suivi de vos demandes">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="22.0" />
+							</font>
+						</Text>
+						<Text
+							fill="#aaccee"
+							text="Consultez, modifiez ou supprimez vos demandes.">
+							<font>
+								<Font size="12.0"/>
+							</font>
+						</Text>
+					</VBox>
+					<Button
+						onAction="#handleNouvelle"
+						text="Nouvelle demande"
+						style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-cursor:hand;-fx-padding:12 20;" />
+				</HBox>
+				<HBox spacing="16.0">
+					<VBox
+						alignment="CENTER"
+						prefWidth="170.0"
+						spacing="8.0"
+						style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);-fx-padding:20 12;">
+						<Text
+							fill="#888888"
+							text="Total demandes" />
+						<Text
+							fx:id="totalDemandes"
+							fill="#073566"
+							text="4">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="30.0" />
+							</font>
+						</Text>
+					</VBox>
+					<VBox
+						alignment="CENTER"
+						prefWidth="170.0"
+						spacing="8.0"
+						style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);-fx-padding:20 12;">
+						<Text
+							fill="#888888"
+							text="En attente" />
+						<Text
+							fx:id="enAttenteCount"
+							fill="#e67e22"
+							text="1">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="30.0" />
+							</font>
+						</Text>
+					</VBox>
+					<VBox
+						alignment="CENTER"
+						prefWidth="170.0"
+						spacing="8.0"
+						style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);-fx-padding:20 12;">
+						<Text
+							fill="#888888"
+							text="Acceptées" />
+						<Text
+							fx:id="accepteesCount"
+							fill="#27ae60"
+							text="2">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="30.0" />
+							</font>
+						</Text>
+					</VBox>
+					<VBox
+						alignment="CENTER"
+						prefWidth="170.0"
+						spacing="8.0"
+						style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);-fx-padding:20 12;">
+						<Text
+							fill="#888888"
+							text="Refusées" />
+						<Text
+							fx:id="refuseesCount"
+							fill="#e74c3c"
+							text="1">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="30.0" />
+							</font>
+						</Text>
+					</VBox>
+				</HBox>
+				<VBox
+					spacing="12.0"
+					style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);-fx-padding:20;"
+					VBox.vgrow="ALWAYS">
+					<HBox spacing="12">
+						<TextField
+							fx:id="searchField"
+							promptText="Rechercher"
+							HBox.hgrow="ALWAYS"
+							style="-fx-background-color:#f0f4f8;-fx-background-radius:8;-fx-padding:9 12;" />
+						<ComboBox
+							fx:id="typeFilter"
+							promptText="Type"
+							prefWidth="160" />
+						<ComboBox
+							fx:id="statutFilter"
+							promptText="Statut"
+							prefWidth="160" />
+					</HBox>
+					<TableView
+						fx:id="demandesTable"
+						VBox.vgrow="ALWAYS">
+						<columns>
+							<TableColumn
+								fx:id="colRef"
+								text="Réf."
+								prefWidth="90" />
+							<TableColumn
+								fx:id="colType"
+								text="Type"
+								prefWidth="190" />
+							<TableColumn
+								fx:id="colDescription"
+								text="Description"
+								prefWidth="260" />
+							<TableColumn
+								fx:id="colDate"
+								text="Date"
+								prefWidth="120" />
+							<TableColumn
+								fx:id="colStatut"
+								text="Statut"
+								prefWidth="130" />
+						</columns>
+					</TableView>
+					<HBox
+						alignment="CENTER_RIGHT"
+						spacing="10">
+						<Button
+							onAction="#handleVoir"
+							text="Voir" />
+						<Button
+							onAction="#handleModifier"
+							text="Modifier" />
+						<Button
+							onAction="#handleSupprimer"
+							text="Supprimer"
+							style="-fx-text-fill:#e74c3c;" />
+					</HBox>
+				</VBox>
+			</VBox>
+		</VBox>
+	</center>
+</BorderPane>
