@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	maxHeight="-Infinity"
+	maxWidth="-Infinity"
+	minHeight="-Infinity"
+	minWidth="-Infinity"
+	prefHeight="900.0"
+	prefWidth="1100.0"
+	fx:controller="uir.ac.gestionhandicape.controllers.ProfilController">
+	<left>
+		<VBox
+			prefHeight="900.0"
+			prefWidth="220.0"
+			style="-fx-background-color:#073566;">
+			<children>
+				<VBox
+					alignment="CENTER"
+					spacing="10.0"
+					style="-fx-padding:30 20 20 20;">
+					<children>
+						<ImageView
+							fitHeight="70.0"
+							fitWidth="70.0"
+							pickOnBounds="true"
+							preserveRatio="true">
+							<image>
+								<Image url="@../img/UIR-logo.jpg"/>
+							</image>
+						</ImageView>
+						<Text
+							fill="#d0d71c"
+							text="Espace Étudiant"
+							textAlignment="CENTER"
+							wrappingWidth="170.0">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="18.0" />
+							</font>
+						</Text>
+						<Text
+							fill="#ffffff"
+							text="Gestion demandes &amp; réclamations"
+							textAlignment="CENTER"
+							wrappingWidth="170.0">
+							<font>
+								<Font size="11.0"/>
+							</font>
+						</Text>
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					alignment="CENTER"
+					spacing="6.0"
+					style="-fx-padding:20 16 16 16;">
+					<children>
+						<Label
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:20px;-fx-font-weight:bold;-fx-background-radius:30;-fx-min-width:52;-fx-min-height:52;-fx-alignment:CENTER;"
+							text="A" />
+						<Label
+							style="-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-font-weight:bold;"
+							text="Amine Benali" />
+						<Label
+							style="-fx-text-fill:#aaaaaa;-fx-font-size:11px;"
+							text="N° 20230001" />
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					spacing="4.0"
+					style="-fx-padding:16 12 16 12;">
+					<children>
+						<Button
+							fx:id="btnDashboard"
+							onAction="#handleDashboard"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Tableau de bord" />
+						<Button
+							fx:id="btnDemandes"
+							onAction="#handleDemandes"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Mes demandes" />
+						<Button
+							fx:id="btnNewDemande"
+							onAction="#handleNouvelleDemande"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Nouvelle demande" />
+						<Button
+							fx:id="btnReclamations"
+							onAction="#handleReclamations"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Mes réclamations" />
+						<Button
+							fx:id="btnNewReclamation"
+							onAction="#handleNouvelleReclamation"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Nouvelle réclamation" />
+						<Button
+							fx:id="btnProfil"
+							onAction="#handleProfil"
+							prefHeight="40.0"
+							prefWidth="196.0"
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Mon profil" />
+					</children>
+				</VBox>
+				<Region VBox.vgrow="ALWAYS"/>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox style="-fx-padding:16 12 24 12;">
+					<children>
+						<Button
+							onAction="#handleLogout"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ff6b6b;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;-fx-padding:0 0 0 14;"
+							text="Déconnexion" />
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</left>
+	<center>
+		<VBox style="-fx-background-color:#f0f4f8;">
+			<children>
+				<HBox
+					alignment="CENTER_LEFT"
+					prefHeight="64.0"
+					spacing="14.0"
+					style="-fx-background-color:#ffffff;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),6,0,0,2);-fx-padding:0 24 0 24;">
+					<children>
+						<VBox
+							alignment="CENTER_LEFT"
+							HBox.hgrow="ALWAYS">
+							<children>
+								<Text
+									fill="#073566"
+									text="Mon profil">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="20.0" />
+									</font>
+								</Text>
+								<Text
+									fill="#aaaaaa"
+									text="Gestion de vos informations personnelles">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+							</children>
+						</VBox>
+					</children>
+				</HBox>
+				<ScrollPane
+					fitToWidth="true"
+					VBox.vgrow="ALWAYS"
+					style="-fx-background-color:transparent;-fx-background:transparent;-fx-border-color:transparent;">
+					<content>
+						<VBox
+							spacing="20.0"
+							fillWidth="true"
+							style="-fx-padding:24 28 28 28;">
+							<children>
+								<VBox
+									spacing="16.0"
+									style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:24 28;">
+									<children>
+										<HBox
+											alignment="CENTER_LEFT"
+											spacing="16.0">
+											<children>
+												<Label
+													text="A"
+													style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:28px;-fx-font-weight:bold;-fx-background-radius:40;-fx-min-width:72;-fx-min-height:72;-fx-alignment:CENTER;" />
+												<VBox>
+													<children>
+														<Label
+															text="Amine Benali"
+															style="-fx-text-fill:#073566;-fx-font-size:18px;-fx-font-weight:bold;" />
+														<Label
+															text="Étudiant en situation de handicap"
+															style="-fx-text-fill:#888888;" />
+													</children>
+												</VBox>
+											</children>
+										</HBox>
+										<Separator/>
+										<GridPane
+											hgap="18.0"
+											vgap="14.0">
+											<columnConstraints>
+												<ColumnConstraints prefWidth="140.0"/>
+												<ColumnConstraints hgrow="ALWAYS"/>
+												<ColumnConstraints prefWidth="140.0"/>
+												<ColumnConstraints hgrow="ALWAYS"/>
+											</columnConstraints>
+											<children>
+												<Label
+													text="Nom"
+													GridPane.rowIndex="0" />
+												<TextField
+													fx:id="nomField"
+													text="Benali"
+													GridPane.columnIndex="1"
+													GridPane.rowIndex="0" />
+												<Label
+													text="Prénom"
+													GridPane.columnIndex="2"
+													GridPane.rowIndex="0" />
+												<TextField
+													fx:id="prenomField"
+													text="Amine"
+													GridPane.columnIndex="3"
+													GridPane.rowIndex="0" />
+												<Label
+													text="Email"
+													GridPane.rowIndex="1" />
+												<TextField
+													fx:id="emailField"
+													text="amine.benali@uir.ac.ma"
+													GridPane.columnIndex="1"
+													GridPane.rowIndex="1" />
+												<Label
+													text="Téléphone"
+													GridPane.columnIndex="2"
+													GridPane.rowIndex="1" />
+												<TextField
+													fx:id="telephoneField"
+													text="0600000000"
+													GridPane.columnIndex="3"
+													GridPane.rowIndex="1" />
+												<Label
+													text="Filière"
+													GridPane.rowIndex="2" />
+												<TextField
+													fx:id="filiereField"
+													text="Génie Informatique"
+													GridPane.columnIndex="1"
+													GridPane.rowIndex="2" />
+												<Label
+													text="Niveau"
+													GridPane.columnIndex="2"
+													GridPane.rowIndex="2" />
+												<TextField
+													fx:id="niveauField"
+													text="3ème année"
+													GridPane.columnIndex="3"
+													GridPane.rowIndex="2" />
+												<Label
+													text="Type de handicap"
+													GridPane.rowIndex="3" />
+												<ComboBox
+													fx:id="handicapCombo"
+													promptText="Choisir"
+													GridPane.columnIndex="1"
+													GridPane.rowIndex="3" />
+												<Label
+													text="N° étudiant"
+													GridPane.columnIndex="2"
+													GridPane.rowIndex="3" />
+												<TextField
+													fx:id="numeroField"
+													text="20230001"
+													GridPane.columnIndex="3"
+													GridPane.rowIndex="3" />
+												<Label
+													text="Adresse"
+													GridPane.rowIndex="4"
+													GridPane.valignment="TOP" />
+												<TextArea
+													fx:id="adresseArea"
+													prefHeight="80.0"
+													GridPane.columnIndex="1"
+													GridPane.rowIndex="4"
+													GridPane.columnSpan="3" />
+											</children>
+										</GridPane>
+										<HBox
+											alignment="CENTER_RIGHT"
+											spacing="10.0">
+											<children>
+												<Button
+													fx:id="btnChangePassword"
+													onAction="#handleChangePassword"
+													text="Changer le mot de passe"
+													style="-fx-background-color:#f0f4f8;-fx-text-fill:#073566;-fx-font-weight:bold;-fx-background-radius:8;-fx-padding:10 20;" />
+												<Button
+													fx:id="btnSaveProfile"
+													onAction="#handleSaveProfile"
+													text="Enregistrer"
+													style="-fx-background-color:#073566;-fx-text-fill:#ffffff;-fx-font-weight:bold;-fx-background-radius:8;-fx-padding:10 24;" />
+											</children>
+										</HBox>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+					</content>
+				</ScrollPane>
+			</children>
+		</VBox>
+	</center>
+</BorderPane>

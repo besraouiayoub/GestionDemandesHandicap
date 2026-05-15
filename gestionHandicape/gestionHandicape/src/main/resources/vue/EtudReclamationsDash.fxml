@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	maxHeight="-Infinity"
+	maxWidth="-Infinity"
+	minHeight="-Infinity"
+	minWidth="-Infinity"
+	prefHeight="900.0"
+	prefWidth="1100.0"
+	fx:controller="uir.ac.gestionhandicape.controllers.EtudReclamationsController">
+	<left>
+		<VBox
+			prefHeight="900.0"
+			prefWidth="220.0"
+			style="-fx-background-color:#073566;">
+			<children>
+				<VBox
+					alignment="CENTER"
+					spacing="10.0"
+					style="-fx-padding:30 20 20 20;">
+					<children>
+						<ImageView
+							fitHeight="70.0"
+							fitWidth="70.0"
+							pickOnBounds="true"
+							preserveRatio="true">
+							<image>
+								<Image url="@../img/UIR-logo.jpg"/>
+							</image>
+						</ImageView>
+						<Text
+							fill="#d0d71c"
+							text="Espace Étudiant"
+							textAlignment="CENTER"
+							wrappingWidth="160.0">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="18.0" />
+							</font>
+						</Text>
+						<Text
+							fill="#ffffff"
+							text="Gestion des Réclamations"
+							textAlignment="CENTER"
+							wrappingWidth="160.0">
+							<font>
+								<Font size="11.0"/>
+							</font>
+						</Text>
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					alignment="CENTER"
+					spacing="6.0"
+					style="-fx-padding:20 16 16 16;">
+					<children>
+						<Label
+							fx:id="avatarLabel"
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:22px;-fx-font-weight:bold;-fx-background-radius:30;-fx-min-width:52;-fx-min-height:52;-fx-alignment:CENTER;"
+							text="A" />
+						<Label
+							fx:id="nomEtudiantLabel"
+							style="-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-font-weight:bold;"
+							text="Amine Benali" />
+						<Label
+							fx:id="numeroEtudiantLabel"
+							style="-fx-text-fill:#aaaaaa;-fx-font-size:11px;"
+							text="N° 20230001" />
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					spacing="4.0"
+					style="-fx-padding:16 12 16 12;">
+					<children>
+						<Button
+							fx:id="btnDashboard"
+							onAction="#handleDashboard"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Tableau de bord" />
+						<Button
+							fx:id="btnReclamations"
+							onAction="#handleReclamations"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Mes réclamations" />
+						<Button
+							fx:id="btnNouvelleReclamation"
+							onAction="#handleOpenForm"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Nouvelle réclamation" />
+						<Button
+							fx:id="btnDemandes"
+							onAction="#handleDemandes"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Mes demandes" />
+						<Button
+							fx:id="btnProfil"
+							onAction="#handleProfil"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Mon profil" />
+					</children>
+				</VBox>
+				<Region VBox.vgrow="ALWAYS"/>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox style="-fx-padding:16 12 24 12;">
+					<children>
+						<Button
+							onAction="#handleLogout"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ff6b6b;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Déconnexion" />
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</left>
+	<center>
+		<VBox style="-fx-background-color:#f0f4f8;">
+			<children>
+				<HBox
+					alignment="CENTER_LEFT"
+					prefHeight="64.0"
+					spacing="14.0"
+					style="-fx-background-color:#ffffff;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),6,0,0,2);-fx-padding:0 24 0 24;">
+					<children>
+						<VBox
+							alignment="CENTER_LEFT"
+							HBox.hgrow="ALWAYS">
+							<children>
+								<Text
+									fill="#073566"
+									text="Mes Réclamations">
+									<font>
+										<Font
+											name="DIN Condensed Bold"
+											size="20.0" />
+									</font>
+								</Text>
+								<Text
+									fill="#aaaaaa"
+									text="Suivi et gestion de vos réclamations">
+									<font>
+										<Font size="11.0"/>
+									</font>
+								</Text>
+							</children>
+						</VBox>
+						<TextField
+							fx:id="searchField"
+							prefHeight="36.0"
+							prefWidth="260.0"
+							promptText="Rechercher par référence, type..."
+							style="-fx-background-color:#f0f4f8;-fx-border-color:transparent;-fx-background-radius:20;-fx-padding:0 14;-fx-font-size:12px;" />
+						<Button
+							onAction="#handleOpenForm"
+							prefHeight="36.0"
+							style="-fx-background-color:#073566;-fx-text-fill:#ffffff;-fx-font-size:12px;-fx-font-weight:bold;-fx-background-radius:8;-fx-cursor:hand;-fx-padding:0 18;"
+							text="+ Nouvelle réclamation" />
+					</children>
+				</HBox>
+				<ScrollPane
+					fitToWidth="true"
+					style="-fx-background-color:transparent;-fx-background:transparent;-fx-border-color:transparent;"
+					VBox.vgrow="ALWAYS">
+					<content>
+						<VBox
+							fillWidth="true"
+							spacing="20.0"
+							style="-fx-padding:24 28 28 28;">
+							<children>
+								<HBox
+									fillHeight="true"
+									spacing="14.0">
+									<children>
+										<VBox
+											alignment="CENTER_LEFT"
+											spacing="8.0"
+											style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:18 20;"
+											HBox.hgrow="ALWAYS">
+											<children>
+												<HBox
+													alignment="CENTER_LEFT"
+													spacing="12.0">
+													<children>
+														<VBox spacing="2.0">
+															<children>
+																<Label
+																	style="-fx-text-fill:#888888;-fx-font-size:11px;"
+																	text="Total soumises" />
+																<Label
+																	fx:id="statTotal"
+																	style="-fx-text-fill:#073566;-fx-font-size:26px;-fx-font-weight:bold;"
+																	text="5" />
+															</children>
+														</VBox>
+													</children>
+												</HBox>
+												<Label
+													style="-fx-text-fill:#aaaaaa;-fx-font-size:10px;"
+													text="Réclamations au total" />
+											</children>
+										</VBox>
+										<VBox
+											alignment="CENTER_LEFT"
+											spacing="8.0"
+											style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:18 20;"
+											HBox.hgrow="ALWAYS">
+											<children>
+												<HBox
+													alignment="CENTER_LEFT"
+													spacing="12.0">
+													<children>
+														<VBox spacing="2.0">
+															<children>
+																<Label
+																	style="-fx-text-fill:#888888;-fx-font-size:11px;"
+																	text="En attente" />
+																<Label
+																	fx:id="statAttente"
+																	style="-fx-text-fill:#e67e22;-fx-font-size:26px;-fx-font-weight:bold;"
+																	text="2" />
+															</children>
+														</VBox>
+													</children>
+												</HBox>
+												<Label
+													style="-fx-text-fill:#aaaaaa;-fx-font-size:10px;"
+													text="En cours de traitement" />
+											</children>
+										</VBox>
+										<VBox
+											alignment="CENTER_LEFT"
+											spacing="8.0"
+											style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:18 20;"
+											HBox.hgrow="ALWAYS">
+											<children>
+												<HBox
+													alignment="CENTER_LEFT"
+													spacing="12.0">
+													<children>
+														<VBox spacing="2.0">
+															<children>
+																<Label
+																	style="-fx-text-fill:#888888;-fx-font-size:11px;"
+																	text="Résolues" />
+																<Label
+																	fx:id="statResolues"
+																	style="-fx-text-fill:#27ae60;-fx-font-size:26px;-fx-font-weight:bold;"
+																	text="3" />
+															</children>
+														</VBox>
+													</children>
+												</HBox>
+												<Label
+													style="-fx-text-fill:#aaaaaa;-fx-font-size:10px;"
+													text="Traitées avec succès" />
+											</children>
+										</VBox>
+										<VBox
+											alignment="CENTER_LEFT"
+											spacing="8.0"
+											style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:18 20;"
+											HBox.hgrow="ALWAYS">
+											<children>
+												<HBox
+													alignment="CENTER_LEFT"
+													spacing="12.0">
+													<children>
+														<VBox spacing="2.0">
+															<children>
+																<Label
+																	style="-fx-text-fill:#888888;-fx-font-size:11px;"
+																	text="Rejetées" />
+																<Label
+																	fx:id="statRejetees"
+																	style="-fx-text-fill:#e74c3c;-fx-font-size:26px;-fx-font-weight:bold;"
+																	text="0" />
+															</children>
+														</VBox>
+													</children>
+												</HBox>
+												<Label
+													style="-fx-text-fill:#aaaaaa;-fx-font-size:10px;"
+													text="Non acceptées" />
+											</children>
+										</VBox>
+									</children>
+								</HBox>
+								<VBox
+									spacing="14.0"
+									style="-fx-background-color:#ffffff;-fx-background-radius:12;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);-fx-padding:20 22;"
+									VBox.vgrow="ALWAYS">
+									<children>
+										<HBox
+											alignment="CENTER_LEFT"
+											spacing="8.0">
+											<children>
+												<Label
+													style="-fx-text-fill:#073566;-fx-font-size:15px;-fx-font-weight:bold;"
+													text="Liste des réclamations"
+													HBox.hgrow="ALWAYS" />
+												<ToggleButton
+													fx:id="filtreAll"
+													onAction="#handleFiltreAll"
+													prefHeight="32.0"
+													selected="true"
+													style="-fx-background-color:#073566;-fx-text-fill:#ffffff;-fx-font-size:11px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;-fx-padding:0 14;"
+													text="Toutes" />
+												<ToggleButton
+													fx:id="filtreAttente"
+													onAction="#handleFiltreAttente"
+													prefHeight="32.0"
+													style="-fx-background-color:#fff4e5;-fx-text-fill:#e67e22;-fx-font-size:11px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;-fx-padding:0 14;"
+													text="En attente" />
+												<ToggleButton
+													fx:id="filtreResolues"
+													onAction="#handleFiltreResolues"
+													prefHeight="32.0"
+													style="-fx-background-color:#e9f9ef;-fx-text-fill:#27ae60;-fx-font-size:11px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;-fx-padding:0 14;"
+													text="Résolues" />
+												<ToggleButton
+													fx:id="filtreRejetees"
+													onAction="#handleFiltreRejetees"
+													prefHeight="32.0"
+													style="-fx-background-color:#fdecea;-fx-text-fill:#e74c3c;-fx-font-size:11px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;-fx-padding:0 14;"
+													text="Rejetées" />
+												<ComboBox
+													fx:id="filtreType"
+													prefHeight="32.0"
+													prefWidth="170.0"
+													promptText="Type de réclamation"
+													style="-fx-background-color:#f0f4f8;-fx-border-color:transparent;-fx-background-radius:6;-fx-font-size:11px;" />
+											</children>
+										</HBox>
+										<Separator/>
+										<TableView
+											fx:id="reclamationsTable"
+											maxHeight="340.0"
+											prefHeight="340.0"
+											style="-fx-background-color:transparent;-fx-border-color:transparent;"
+											VBox.vgrow="ALWAYS">
+											<columns>
+												<TableColumn
+													fx:id="colRef"
+													minWidth="70.0"
+													prefWidth="80.0"
+													text="Réf." />
+												<TableColumn
+													fx:id="colType"
+													minWidth="120.0"
+													prefWidth="160.0"
+													text="Type" />
+												<TableColumn
+													fx:id="colDescription"
+													minWidth="140.0"
+													prefWidth="200.0"
+													text="Description" />
+												<TableColumn
+													fx:id="colDate"
+													minWidth="100.0"
+													prefWidth="120.0"
+													text="Date soumission" />
+												<TableColumn
+													fx:id="colStatut"
+													minWidth="90.0"
+													prefWidth="110.0"
+													text="Statut" />
+												<TableColumn
+													fx:id="colActions"
+													minWidth="80.0"
+													prefWidth="90.0"
+													text="Actions" />
+											</columns>
+											<placeholder>
+												<VBox
+													alignment="CENTER"
+													spacing="10.0"
+													style="-fx-padding:50 0;">
+													<children>
+														<Label
+															style="-fx-text-fill:#aaaaaa;-fx-font-size:13px;"
+															text="Aucune réclamation trouvée." />
+														<Label
+															style="-fx-text-fill:#cccccc;-fx-font-size:11px;"
+															text="Soumettez votre première réclamation via le bouton ci-dessus." />
+													</children>
+												</VBox>
+											</placeholder>
+										</TableView>
+										<HBox
+											alignment="CENTER_RIGHT"
+											spacing="6.0">
+											<children>
+												<Label
+													fx:id="paginationInfo"
+													style="-fx-text-fill:#aaaaaa;-fx-font-size:11px;"
+													text="Affichage 1–5 sur 5 réclamations"
+													HBox.hgrow="ALWAYS" />
+												<Button
+													fx:id="btnPrevPage"
+													onAction="#handlePrevPage"
+													prefHeight="30.0"
+													prefWidth="30.0"
+													style="-fx-background-color:#f0f4f8;-fx-text-fill:#073566;-fx-font-size:14px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;"
+													text="‹" />
+												<Button
+													fx:id="btnPage1"
+													onAction="#handlePage1"
+													prefHeight="30.0"
+													prefWidth="30.0"
+													style="-fx-background-color:#073566;-fx-text-fill:#ffffff;-fx-font-size:12px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;"
+													text="1" />
+												<Button
+													fx:id="btnPage2"
+													onAction="#handlePage2"
+													prefHeight="30.0"
+													prefWidth="30.0"
+													style="-fx-background-color:#f0f4f8;-fx-text-fill:#073566;-fx-font-size:12px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;"
+													text="2" />
+												<Button
+													fx:id="btnNextPage"
+													onAction="#handleNextPage"
+													prefHeight="30.0"
+													prefWidth="30.0"
+													style="-fx-background-color:#f0f4f8;-fx-text-fill:#073566;-fx-font-size:14px;-fx-font-weight:bold;-fx-background-radius:6;-fx-cursor:hand;"
+													text="›" />
+											</children>
+										</HBox>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+					</content>
+				</ScrollPane>
+			</children>
+		</VBox>
+	</center>
+</BorderPane>

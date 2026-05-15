@@ -1,51 +1,70 @@
-# Application Controllers Documentation
+# Documentation des Contrôleurs - Application de Gestion de Handicap
 
-This document provides an overview of the **Controller layer** implemented for the Java application. Following the MVC (Model-View-Controller) architecture, these classes act as the bridge between the user interface (Views) and the underlying data and business logic (Models/Services).
-
-## Overview
-
-The controller layer manages the application's core workflows, broken down into five distinct modules:
-1. **Authentication**
-2. **Request Management (Demandes)**
-3. **Complaint Management (Réclamations)**
-4. **Dashboard & Statistics**
-5. **Archiving**
+Ce document décrit l'architecture et le rôle de chaque contrôleur (Controller) de l'application JavaFX `gestionHandicape`, en se basant sur les modules définis dans le rapport UML (`Rapport_UML.pdf`). Les contrôleurs agissent comme le lien principal entre les interfaces graphiques (Vues) et les données métier (Modèles).
 
 ---
 
-## 1. Authentication Module
-**Class:** `AuthentificationController`
+## Architecture de Base (Base Controllers)
 
-Handles all aspects of user sessions and authentication.
-* **`login(String email, String motDePasse)`**: Authenticates a user by checking their credentials against the database via `CompteService`. It verifies if the account exists, if the password matches, and if the account is currently active. On success, it creates a global user session.
-* **`logout()`**: Clears the current user session and logs the user out of the application.
+L'application utilise un système d'héritage pour centraliser les comportements communs et éviter la duplication de code.
 
-## 2. Request Management Module
-**Class:** `DemandeController`
-
-Manages the lifecycle of requests (demandes) submitted by users (e.g., students).
-* **`soumettreDemande(...)`**: Allows a user to create a new request with a title, description, type, and attached files. It initializes the request with a `PENDING` (EN_ATTENTE) status and saves it via the `DemandeService`.
-* **`traiterDemande(Demande demande, StatutDemande nouveauStatut)`**: Used by administrators to update the status of a request and automatically record the processing date.
-
-## 3. Complaint Management Module
-**Class:** `ReclamationController`
-
-Handles the submission of complaints and tracks their history for transparency.
-* **`ajouterReclamation(...)`**: Creates a new complaint with an initial `NEW` status. It automatically generates a historical action log ("Création de réclamation") to ensure traceability before saving it to the database via `ReclamationService`.
-
-## 4. Dashboard & Statistics Module
-**Class:** `TableauDeBordController`
-
-Provides data aggregation for the administrative dashboard.
-* **`chargerDonnees(Filtre filtre)`**: Aggregates statistical data such as the total number of requests and the number of processed requests, applying any relevant filters (e.g., time periods).
-* **`exporterRapportStats(TableauDeBord tb)`**: Generates a downloadable PDF report based on the dashboard's current statistical data.
-
-## 5. Archiving Module
-**Class:** `GestionnaireArchivage`
-
-Acts as a control component for long-term data storage and retrieval.
-* **`archiverElement(Object element, String motif)`**: Archives a specific object (like an old request or complaint) by saving its current state/content along with the date and the specific reason for archiving.
-* **`lancerRecherche(RechercheMulticritere criteres)`**: Allows administrators to search through the archives using multiple criteria.
+* **`BaseController`** : Le contrôleur racine dont héritent la plupart des contrôleurs de l'application. Il contient les méthodes utilitaires communes (navigation entre les vues, affichage des alertes et des erreurs).
+* **`AdminBaseController`** : Hérite de `BaseController` et ajoute des fonctionnalités spécifiques à l'espace administrateur (vérification des droits d'accès, gestion du menu de navigation côté admin).
 
 ---
-*Note: These controllers are designed to be cleanly decoupled and integrated with their respective Service and Model classes which handle direct database interactions.*
+
+## Module 1 : Authentification & Gestion des Comptes
+
+Ce module gère l'accès à l'application et la différenciation des rôles entre les **Administrateurs** et les **Étudiants en situation de handicap**.
+
+* **`LoginController`** : Constitue le point d'entrée de l'application. Il gère la vérification des identifiants (email et mot de passe), la validation des saisies, et redirige l'utilisateur vers le bon tableau de bord (`AdmiDashController` ou `EtudDashController`) en fonction de son rôle.
+* **`SignUpController`** : Gère le formulaire d'inscription pour les nouveaux étudiants. Il assure la création de l'objet `EtudiantHandicape`.
+* **`AdminCreationCompteController`** : Utilisé par l'administrateur pour créer manuellement de nouveaux comptes (autres administrateurs ou comptes spécifiques).
+* **`AdminEtudiantsController`** : Permet à l'administrateur de lister, consulter, modifier ou bloquer les comptes étudiants.
+* **`ProfilController`** / **`EtudProfilController`** : Gèrent l'affichage et la modification des informations personnelles de l'utilisateur connecté.
+
+---
+
+## Module 2 : Gestion des Demandes
+
+Ce module est au cœur du système. Il permet la soumission, le suivi et le traitement des demandes, en associant les entités `Demande`, `TypeDemande`, `StatutDemande` et `PieceJointe`.
+
+* **`NouvelleDemandeController`** : Gère l'interface de dépôt d'une nouvelle demande par l'étudiant. Il collecte le titre, la description, le type, la priorité, et permet de lier des pièces jointes.
+* **`EtudDemandesController`** / **`MesDemandesController`** : Affiche l'historique et l'état d'avancement des demandes soumises par un étudiant spécifique.
+* **`AdminDemandesController`** : Fournit à l'administrateur une vue globale de toutes les demandes. Permet de filtrer par statut et de modifier l'état des demandes (ex: En cours de traitement, Validée, Refusée).
+
+---
+
+## Module 3 : Gestion des Réclamations
+
+Ce module permet de signaler un problème ou une insatisfaction et d'en assurer la traçabilité.
+
+* **`NouvelleReclamationController`** : Gère la soumission d'une nouvelle réclamation par l'étudiant (objet, contenu et éventuelles pièces jointes).
+* **`EtudReclamationsController`** : Permet à l'étudiant de suivre l'évolution de ses réclamations et de voir les réponses de l'administration.
+* **`AdminReclamationsController`** : Interface d'administration pour traiter les réclamations, avec la possibilité d'ajouter des réponses administratives et de mettre à jour le statut (`StatutReclamation`).
+
+---
+
+## Module 4 : Tableau de Bord, Statistiques et Rapports
+
+Ce module offre une vue synthétique des données pour faciliter la prise de décision.
+
+* **`AdmiDashController`** : Le tableau de bord de l'administrateur. Il centralise l'affichage des principaux indicateurs et permet une navigation rapide vers la gestion des demandes, réclamations et étudiants.
+* **`EtudDashController`** : Le tableau de bord de l'étudiant, offrant un aperçu de ses demandes récentes, réclamations en cours et notifications.
+* **`AdminStatsController`** / **`StatistiquesController`** : Utilisent la classe `Statistique` pour calculer et afficher graphiquement (via JavaFX Charts) l'évolution des demandes, la répartition par type, ou le taux de traitement.
+* **`NotificationsController`** : Gère l'affichage des notifications et alertes récentes pour l'utilisateur.
+
+---
+
+## Module 5 : Archivage
+
+L'archivage assure la conservation sécurisée de l'historique complet des dossiers traités (demandes finalisées, anciens comptes).
+
+* **`ArchivageController`** : Fait le lien avec le `GestionnaireArchivage` décrit dans l'UML. Il permet à l'administrateur de :
+  * Lancer des recherches multicritères via la classe `RechercheMulticritere`.
+  * Consulter l'historique des éléments archivés.
+  * Restaurer ou supprimer définitivement certains éléments selon les habilitations.
+
+---
+
+*Ce document a été généré en adéquation avec l'architecture UML globale du projet, garantissant une séparation claire des responsabilités au sein du code.*
