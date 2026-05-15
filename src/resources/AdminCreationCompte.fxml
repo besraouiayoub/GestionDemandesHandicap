@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	prefHeight="900.0"
+	prefWidth="1100.0"
+	fx:controller="uir.ac.gestionhandicape.controllers.AdminCreationCompteController">
+	<left>
+		<VBox
+			prefWidth="220.0"
+			style="-fx-background-color:#073566;">
+			<children>
+				<VBox
+					alignment="CENTER"
+					spacing="10.0"
+					style="-fx-padding:30 20 20 20;">
+					<children>
+						<ImageView
+							fitHeight="70.0"
+							fitWidth="70.0"
+							preserveRatio="true">
+							<image>
+								<Image url="@../img/UIR-logo.jpg"/>
+							</image>
+						</ImageView>
+						<Text
+							fill="#d0d71c"
+							text="Administration"
+							textAlignment="CENTER">
+							<font>
+								<Font
+									name="DIN Condensed Bold"
+									size="18.0" />
+							</font>
+						</Text>
+						<Text
+							fill="#ffffff"
+							text="Création des comptes"
+							textAlignment="CENTER"
+							wrappingWidth="160.0">
+							<font>
+								<Font size="11.0"/>
+							</font>
+						</Text>
+					</children>
+				</VBox>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox
+					spacing="4.0"
+					style="-fx-padding:16 12 16 12;">
+					<children>
+						<Button
+							onAction="#handleDashboard"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Tableau de bord" />
+						<Button
+							onAction="#handleReclamations"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Réclamations" />
+						<Button
+							fx:id="btnDemandes"
+							layoutX="22.0"
+							layoutY="72.0"
+							onAction="#handleDemandes"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Demandes" />
+						<Button
+							fx:id="btnEtudiants"
+							layoutX="22.0"
+							layoutY="118.0"
+							onAction="#handleEtudiants"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Étudiants" />
+						<Button
+							fx:id="btnStatistiques"
+							layoutX="22.0"
+							layoutY="164.0"
+							onAction="#handleStatistiques"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Statistiques" />
+						<Button
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:#d0d71c;-fx-text-fill:#073566;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Créer compte étudiant" />
+					</children>
+				</VBox>
+				<Region VBox.vgrow="ALWAYS"/>
+				<Separator style="-fx-background-color:#1a4a7a;"/>
+				<VBox style="-fx-padding:16 12 24 12;">
+					<children>
+						<Button
+							onAction="#handleLogout"
+							prefHeight="42.0"
+							prefWidth="196.0"
+							style="-fx-background-color:transparent;-fx-text-fill:#ff6b6b;-fx-font-size:13px;-fx-font-weight:bold;-fx-background-radius:8;-fx-alignment:CENTER-LEFT;-fx-cursor:hand;"
+							text="Déconnexion" />
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</left>
+	<center>
+		<VBox
+			spacing="20.0"
+			style="-fx-background-color:#f0f4f8;-fx-padding:30;">
+			<children>
+				<Text
+					fill="#073566"
+					text="Créer un compte étudiant">
+					<font>
+						<Font
+							name="DIN Condensed Bold"
+							size="28.0" />
+					</font>
+				</Text>
+				<VBox
+					spacing="14.0"
+					style="-fx-background-color:white;-fx-background-radius:12;-fx-padding:30;">
+					<children>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Nom complet" />
+								<TextField
+									fx:id="nomField"
+									prefWidth="320.0"
+									promptText="Nom et prénom" />
+							</children>
+						</VBox>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Adresse e-mail" />
+								<TextField
+									fx:id="emailField"
+									prefWidth="320.0"
+									promptText="exemple@uir.ac.ma" />
+							</children>
+						</VBox>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Numéro étudiant" />
+								<TextField
+									fx:id="numeroField"
+									prefWidth="320.0"
+									promptText="20230001" />
+							</children>
+						</VBox>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Type de handicap" />
+								<ComboBox
+									fx:id="handicapBox"
+									prefWidth="320.0"
+									promptText="Sélectionner un type">
+									<items>
+										<FXCollections fx:factory="observableArrayList">
+											<String fx:value="Handicap visuel"/>
+											<String fx:value="Handicap auditif"/>
+											<String fx:value="Handicap moteur"/>
+											<String fx:value="Handicap cognitif"/>
+											<String fx:value="Autre"/>
+										</FXCollections>
+									</items>
+								</ComboBox>
+							</children>
+						</VBox>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Mot de passe" />
+								<PasswordField
+									fx:id="passwordField"
+									prefWidth="320.0"
+									promptText="••••••••" />
+							</children>
+						</VBox>
+						<VBox spacing="5.0">
+							<children>
+								<Label
+									style="-fx-font-size:13px;-fx-text-fill:#073566;-fx-font-weight:bold;"
+									text="Confirmer le mot de passe" />
+								<PasswordField
+									fx:id="confirmPasswordField"
+									prefWidth="320.0"
+									promptText="••••••••" />
+							</children>
+						</VBox>
+						<HBox spacing="12.0">
+							<children>
+								<Button
+									onAction="#handleCreerCompte"
+									prefHeight="42.0"
+									style="-fx-background-color:#073566;-fx-text-fill:white;-fx-font-size:14px;-fx-font-weight:bold;-fx-background-radius:8;-fx-cursor:hand;"
+									text="Créer le compte" />
+								<Button
+									onAction="#handleAnnuler"
+									prefHeight="42.0"
+									style="-fx-background-color:#dddddd;-fx-text-fill:#073566;-fx-font-size:14px;-fx-font-weight:bold;-fx-background-radius:8;-fx-cursor:hand;"
+									text="Annuler" />
+							</children>
+						</HBox>
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+	</center>
+</BorderPane>
